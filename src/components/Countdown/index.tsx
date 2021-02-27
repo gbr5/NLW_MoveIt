@@ -1,15 +1,18 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { ChallengesContext } from '../../contexts/ChallengeContext';
+import React, { useContext } from 'react';
 import { CountdownContext } from '../../contexts/CountdownContext';
-
-import { Container, CountdownFinished, CountdownButton, ResetButton } from './styles';
+import {
+  Container,
+  CountdownFinished,
+  CountdownButton,
+  ResetButton,
+} from './styles';
 
 const Countdown: React.FC = () => {
   const {
-    hasFinished,
     minutes,
     seconds,
     isActive,
+    hasFinished,
     startCountdown,
     resetCountdown
   } = useContext(CountdownContext);
@@ -30,22 +33,25 @@ const Countdown: React.FC = () => {
           <span>{secondRight}</span>
         </div>
       </Container>
-        {hasFinished && (
-          <CountdownFinished>
-            Ciclo Encerrado
-          </CountdownFinished>
-        )}
-        {!isActive ? (
-          <CountdownButton  isActive={false} onClick={startCountdown}>
-            Iniciar ciclo
-          </CountdownButton>
-        ) : (
-          <ResetButton onClick={resetCountdown}>
-            Resetar ciclo
-          </ResetButton>
-        )}
-      </>
-    );
+      {hasFinished ? (
+        <CountdownFinished>
+          Ciclo Encerrado
+        </CountdownFinished>
+      ) : (
+        <>
+          {!isActive ? (
+            <CountdownButton  isActive={false} onClick={startCountdown}>
+              Iniciar ciclo
+            </CountdownButton>
+          ) : (
+            <ResetButton onClick={resetCountdown}>
+              Resetar ciclo
+            </ResetButton>
+          )}
+        </>
+      )}
+    </>
+  );
 };
 
 export default Countdown;

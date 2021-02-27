@@ -1,5 +1,5 @@
 export default interface IChallengeDTO {
-  type: "body" | "eye" | string;
+  type: string;
   description: string;
   amount: number;
 }

@@ -13,7 +13,8 @@ const ChallengeBox: React.FC = () => {
   const {
     activeChallenge,
     resetChallenge,
-    completeChallenge
+    completeChallenge,
+    resetMemory,
   } = useContext(ChallengesContext);
   const { resetCountdown } = useContext(CountdownContext);
 
@@ -27,9 +28,22 @@ const ChallengeBox: React.FC = () => {
     resetCountdown();
   }, [resetCountdown, resetChallenge]);
 
+  const handleReset = useCallback(() => {
+    resetMemory();
+    resetCountdown();
+  }, [resetCountdown, resetMemory]);
+
   return (
     <ChallengeContainer>
-      {!!activeChallenge ? (
+      <ResultButton
+        type="button"
+        onClick={handleReset}
+        failed
+        succeeded={false}
+      >
+        Resetar
+      </ResultButton>
+      {!!activeChallenge && activeChallenge.amount ? (
         <ActiveChallenge>
           <header>Ganhe {activeChallenge.amount} xp</header>
 

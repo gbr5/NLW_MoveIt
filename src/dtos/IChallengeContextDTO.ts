@@ -6,8 +6,9 @@ export default interface IChallengeContextDTO {
   activeChallenge: IChallengeDTO;
   currentExperience: number;
   challengesCompleted: number;
-  levelUp: Function;
   startNewChallenge: () => void;
   resetChallenge: () => void;
   completeChallenge: () => void;
+  resetMemory: () => void;
+  closeLevelUpModal: () => void;
 };

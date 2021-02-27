@@ -1,8 +1,5 @@
 import '../styles/global.css';
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { ChallengesProvider } from '../contexts/ChallengeContext';
-import { CountdownProvider } from '../contexts/CountdownContext';
-
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -25,9 +22,7 @@ function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <ChallengesProvider>
-          <Component {...pageProps} />
-        </ChallengesProvider>
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );

@@ -12,6 +12,10 @@ export const ChallengeContainer = styled.div`
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0,0,0,0.6);
   padding: 1.5rem 2rem;
+
+  > button {
+    margin-bottom: 3rem;
+  }
 `;
 
 export const NotActiveContainer = styled.div`
